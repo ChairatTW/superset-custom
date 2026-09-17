@@ -1,0 +1,4 @@
+oracledb
+duckdb
+duckdb-engine
+questdb-connect==1.1.3
