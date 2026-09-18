@@ -10,3 +10,4 @@ RUN pip install --no-cache-dir \
 COPY superset_config.py /etc/superset/superset_config.py
 
 USER superset
+ENTRYPOINT ["sleep", "infinity"]
