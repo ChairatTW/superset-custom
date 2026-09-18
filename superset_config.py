@@ -1,39 +1,29 @@
 import os
+from sqlalchemy.engine import URL
 
-
-# =========================================================
-# Secret Key
-# =========================================================
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
-# =========================================================
-# PostgreSQL - Superset Metadata Database
-# =========================================================
-
 POSTGRES_HOST = os.getenv("POSTGRES_HOST", "postgres")
-POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
+POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", "5432"))
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 POSTGRES_DB = os.getenv("POSTGRES_DB", "superset-db")
 
 
-SQLALCHEMY_DATABASE_URI = (
-    f"postgresql+psycopg2://"
-    f"{POSTGRES_USER}:"
-    f"{POSTGRES_PASSWORD}@"
-    f"{POSTGRES_HOST}:"
-    f"{POSTGRES_PORT}/"
-    f"{POSTGRES_DB}"
+SQLALCHEMY_DATABASE_URI = URL.create(
+    drivername="postgresql+psycopg2",
+    username=POSTGRES_USER,
+    password=POSTGRES_PASSWORD,
+    host=POSTGRES_HOST,
+    port=POSTGRES_PORT,
+    database=POSTGRES_DB,
 )
+
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-
-# =========================================================
-# Redis
-# =========================================================
 
 REDIS_HOST = os.getenv("REDIS_HOST", "redis")
 REDIS_PORT = int(os.getenv("REDIS_PORT", "6379"))
