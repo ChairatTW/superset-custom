@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # PostgreSQL Metadata Database
 # =========================================================
 
-POSTGRES_HOST = os.getenv("POSTGRES_HOST", "postgres")
+POSTGRES_HOST = os.getenv("POSTGRES_HOST", "superset610-postgres")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
